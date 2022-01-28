@@ -10,13 +10,14 @@ import org.apache.poi.util.Units;
 import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
 
 import com.vaadin.addon.spreadsheet.client.OverlayInfo;
+import com.vaadin.event.SerializableEventListener;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Component;
 
 @SuppressWarnings("serial")
 public abstract class SheetOverlayWrapper implements Serializable {
 
-    public interface OverlayChangeListener extends Serializable {
+    public interface OverlayChangeListener extends SerializableEventListener {
         void overlayChanged();
     }
 

@@ -28,11 +28,10 @@ public class TestableUI extends UI {
 
     public TestableUI(Component content) {
         servlet = new VaadinServlet();
-        deploymentConfiguration = new DefaultDeploymentConfiguration(
-                TestableUI.class, new Properties());
+        deploymentConfiguration = new DefaultDeploymentConfiguration(TestableUI.class, new Properties());
         try {
-            service = new VaadinServletService(servlet,
-                    deploymentConfiguration);
+            service = new VaadinServletService(servlet, deploymentConfiguration);
+            service.init();
         } catch (ServiceException e) {
             throw new RuntimeException("Failed to create service", e);
         }
@@ -49,5 +48,9 @@ public class TestableUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
 
+    }
+
+    public void setSession(VaadinSession session) {
+        super.setSession(session);
     }
 }

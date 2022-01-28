@@ -44,7 +44,7 @@ import java.util.WeakHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.poi.hssf.converter.AbstractExcelUtils;
+import org.apache.poi.hssf.converter.ExcelToHtmlUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.formula.BaseFormulaEvaluator;
@@ -87,6 +87,7 @@ import com.vaadin.addon.spreadsheet.command.SizeChangeCommand.Type;
 import com.vaadin.addon.spreadsheet.shared.GroupingData;
 import com.vaadin.addon.spreadsheet.shared.SpreadsheetState;
 import com.vaadin.event.Action;
+import com.vaadin.event.SerializableEventListener;
 import com.vaadin.event.Action.Handler;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.AbstractComponent;
@@ -1988,7 +1989,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
             LOGGER.log(Level.FINEST, "Poi threw NullPointerException when trying to autofit column", e);
             return;
         }
-        int columnPixelWidth = getColumnAutofitPixelWidth(columnIndex, AbstractExcelUtils
+        int columnPixelWidth = getColumnAutofitPixelWidth(columnIndex, ExcelToHtmlUtils
             .getColumnWidthInPx(activeSheet.getColumnWidth(columnIndex)));
 
         getState().colW[columnIndex] = columnPixelWidth;
@@ -2561,7 +2562,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
             getState().hiddenColumnIndexes
                     .remove(getState().hiddenColumnIndexes
                             .indexOf(columnIndex + 1));
-            getState().colW[columnIndex] = AbstractExcelUtils
+            getState().colW[columnIndex] = ExcelToHtmlUtils
                     .getColumnWidthInPx(getActiveSheet().getColumnWidth(
                             columnIndex));
             getCellValueManager().clearCacheForColumn(columnIndex + 1);
@@ -4028,7 +4029,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
                 continue;
             }
             Integer autofittedWidth = autofittedColumnWidths.get(cr);
-            int currentWidth = AbstractExcelUtils.getColumnWidthInPx(filteredSheet
+            int currentWidth = ExcelToHtmlUtils.getColumnWidthInPx(filteredSheet
                 .getColumnWidth(cr.getCol()));
             // only update columns that haven't changed size since the last
             // autofit
@@ -4352,7 +4353,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
     /**
      * Used for knowing when a user has changed the cell selection in any way.
      */
-    public interface SelectionChangeListener extends Serializable {
+    public interface SelectionChangeListener extends SerializableEventListener {
         public static final Method SELECTION_CHANGE_METHOD = ReflectTools
                 .findMethod(SelectionChangeListener.class, "onSelectionChange",
                         SelectionChangeEvent.class);
@@ -4370,7 +4371,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
      * Used for knowing when a user has changed the cell value in Spreadsheet
      * UI.
      */
-    public interface CellValueChangeListener extends Serializable {
+    public interface CellValueChangeListener extends SerializableEventListener {
         public static final Method CELL_VALUE_CHANGE_METHOD = ReflectTools
                 .findMethod(CellValueChangeListener.class, "onCellValueChange",
                         CellValueChangeEvent.class);
@@ -4388,7 +4389,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
      * Used for knowing when a cell referenced by a formula cell has changed in
      * the Spreadsheet UI making the formula value change
      */
-    public interface FormulaValueChangeListener extends Serializable {
+    public interface FormulaValueChangeListener extends SerializableEventListener {
         public static final Method FORMULA_VALUE_CHANGE_METHOD = ReflectTools
                 .findMethod(FormulaValueChangeListener.class,
                         "onFormulaValueChange", FormulaValueChangeEvent.class);
@@ -4472,7 +4473,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
     /**
      * A listener for when an attempt to modify a locked cell has been made.
      */
-    public interface ProtectedEditListener extends Serializable {
+    public interface ProtectedEditListener extends SerializableEventListener {
         public static final Method SELECTION_CHANGE_METHOD = ReflectTools
                 .findMethod(ProtectedEditListener.class, "writeAttempted",
                         ProtectedEditEvent.class);
@@ -4645,7 +4646,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
     /**
      * A listener for when a sheet is selected.
      */
-    public interface SheetChangeListener extends Serializable {
+    public interface SheetChangeListener extends SerializableEventListener {
         public static final Method SHEET_CHANGE_METHOD = ReflectTools
                 .findMethod(SheetChangeListener.class, "onSheetChange",
                         SheetChangeEvent.class);
@@ -5368,7 +5369,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
     /**
      * Interface for listening a {@link RowHeaderDoubleClickEvent} event
      **/
-    public interface RowHeaderDoubleClickListener extends Serializable {
+    public interface RowHeaderDoubleClickListener extends SerializableEventListener {
         Method ON_ROW_ON_ROW_HEADER_DOUBLE_CLICK = ReflectTools
             .findMethod(RowHeaderDoubleClickListener.class,
                 "onRowHeaderDoubleClick", RowHeaderDoubleClickEvent.class);

@@ -22,8 +22,7 @@ public class ConditionalFormatterTest {
      * Ticket #17595
      */
     @Test
-    public void createConditionalFormatterRules_sheetWithStringFormatRuleForNumericCell_rulesCreatedWithoutExceptions()
-            throws URISyntaxException, IOException {
+    public void createConditionalFormatterRules_sheetWithStringFormatRuleForNumericCell_rulesCreatedWithoutExceptions() throws URISyntaxException, IOException {
         createConditionalFormatterRulesForSheet("conditional_formatting.xlsx");
     }
 
@@ -38,31 +37,23 @@ public class ConditionalFormatterTest {
      * HashCode issue reported in SHEET-120
      */
     @Test
-    public void matchesFormula_rulesWithoutFormula_formulasEvaluatedWithoutExceptions()
-            throws URISyntaxException, IOException {
+    public void matchesFormula_rulesWithoutFormula_formulasEvaluatedWithoutExceptions() throws URISyntaxException, IOException {
         // ensure sheet with rules without formulas is active
-        createConditionalFormatterRulesForSheet(
-                "ConditionalFormatterSamples.xlsx", 3);
+        createConditionalFormatterRulesForSheet("ConditionalFormatterSamples.xlsx", 3);
     }
 
     @Test
-    public void createConditionalFormatterRules_ruleWithNullBackgroundColor_rulesCreatedWithoutExceptions()
-            throws URISyntaxException, IOException {
-        createConditionalFormatterRulesForSheet(
-                "conditionalformater_nobackground.xlsx");
+    public void createConditionalFormatterRules_ruleWithNullBackgroundColor_rulesCreatedWithoutExceptions() throws URISyntaxException, IOException {
+        createConditionalFormatterRulesForSheet("conditionalformater_nobackground.xlsx");
     }
 
-    private void createConditionalFormatterRulesForSheet(String fileName)
-            throws URISyntaxException, IOException {
+    private void createConditionalFormatterRulesForSheet(String fileName) throws URISyntaxException, IOException {
         createConditionalFormatterRulesForSheet(fileName, null);
     }
 
-    private void createConditionalFormatterRulesForSheet(String fileName,
-            Integer sheetIndex) throws URISyntaxException, IOException {
-        ClassLoader classLoader = ConditionalFormatterTest.class
-                .getClassLoader();
-        URL resource = classLoader
-                .getResource("test_sheets" + File.separator + fileName);
+    private void createConditionalFormatterRulesForSheet(String fileName, Integer sheetIndex) throws URISyntaxException, IOException {
+        ClassLoader classLoader = ConditionalFormatterTest.class.getClassLoader();
+        URL resource = classLoader.getResource("test_sheets" + File.separator + fileName);
         File file = new File(resource.toURI());
 
         Spreadsheet sheet = new Spreadsheet(file);

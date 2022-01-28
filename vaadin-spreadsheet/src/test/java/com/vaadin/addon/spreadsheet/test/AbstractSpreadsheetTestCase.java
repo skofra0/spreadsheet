@@ -28,8 +28,7 @@ public abstract class AbstractSpreadsheetTestCase extends MultiBrowserTest {
     public void setUp() throws Exception {
         openTestURL();
         headerPage = new HeaderPage(getDriver());
-        sheetController = new SheetController(driver, testBench(driver),
-                getDesiredCapabilities());
+        sheetController = new SheetController(driver, testBench(driver), getDesiredCapabilities());
     }
 
     @Override
@@ -38,19 +37,15 @@ public abstract class AbstractSpreadsheetTestCase extends MultiBrowserTest {
     }
 
     protected void assertInRange(double from, double value, double to) {
-        Assert.assertTrue("Value [" + value + "] is not in range: [" + from
-                + " - " + to + "]", value >= from && value <= to);
+        Assert.assertTrue("Value [" + value + "] is not in range: [" + from + " - " + to + "]", value >= from && value <= to);
     }
 
     protected void assertNoErrorIndicatorDetected() {
-        Assert.assertTrue("Error indicator detected when there should be none.",
-                findElements(By.className("v-errorindicator")).isEmpty());
+        Assert.assertTrue("Error indicator detected when there should be none.", findElements(By.className("v-errorindicator")).isEmpty());
     }
 
     protected void assertAddressFieldValue(String expected, String actual) {
-        assertEquals(
-                "Expected " + expected + " on addressField, actual:" + actual,
-                expected, actual);
+        assertEquals("Expected " + expected + " on addressField, actual:" + actual, expected, actual);
     }
 
     protected void assertNotSelectedCell(String cell, boolean selected) {
@@ -66,10 +61,8 @@ public abstract class AbstractSpreadsheetTestCase extends MultiBrowserTest {
     }
 
     protected void setLocale(Locale locale) {
-        $(NativeSelectElement.class).id("localeSelect")
-                .selectByText(locale.getDisplayName());
-        assertEquals("Unexpected locale,", locale.getDisplayName(),
-                $(NativeSelectElement.class).id("localeSelect").getValue());
+        $(NativeSelectElement.class).id("localeSelect").selectByText(locale.getDisplayName());
+        assertEquals("Unexpected locale,", locale.getDisplayName(), $(NativeSelectElement.class).id("localeSelect").getValue());
     }
 
     /**
@@ -77,7 +70,7 @@ public abstract class AbstractSpreadsheetTestCase extends MultiBrowserTest {
      * necessary to change the theme.
      *
      * @param theme
-     *            theme to load
+     *        theme to load
      */
     protected void loadPage(String theme, String spreadsheetFile) throws Exception {
         driver.get(getTestUrl() + "?theme=" + theme);
@@ -89,7 +82,7 @@ public abstract class AbstractSpreadsheetTestCase extends MultiBrowserTest {
      * Navigates with file fragment.
      *
      * @param spreadsheetFile
-     *            file to load
+     *        file to load
      */
     protected void loadPage(String spreadsheetFile) throws Exception {
         driver.get(getTestUrl() + "#file/" + spreadsheetFile);

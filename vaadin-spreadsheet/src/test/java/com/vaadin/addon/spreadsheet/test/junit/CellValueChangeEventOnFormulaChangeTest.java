@@ -44,16 +44,14 @@ public class CellValueChangeEventOnFormulaChangeTest {
     public void formulaChangeResultingInSameValue() {
         List<CellReference> changedCells = new LinkedList<>();
 
-        spreadsheet.addCellValueChangeListener(
-                event -> changedCells.addAll(event.getChangedCells()));
+        spreadsheet.addCellValueChangeListener(event -> changedCells.addAll(event.getChangedCells()));
 
         spreadsheet.setSelection("C1");
         // B1 is 0, so the result doesn't change
         spreadsheet.getCellValueManager().onCellValueChange(3, 1, "=A1+2*B1");
 
         assertEquals("There should be 1 changed cell", 1, changedCells.size());
-        assertEquals("The changed cell should be C1", new CellReference("C1"),
-                changedCells.get(0));
+        assertEquals("The changed cell should be C1", new CellReference("Sheet0!C1"), changedCells.get(0));
     }
 
 }

@@ -1,17 +1,5 @@
 package com.vaadin.addon.spreadsheet.charts.converter.xssfreader;
 
-import org.openxmlformats.schemas.drawingml.x2006.main.CTColorScheme;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTGradientFillProperties;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTGradientStop;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTPercentage;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTPositiveFixedPercentage;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTSRgbColor;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTSchemeColor;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTSolidColorFillProperties;
-
-import com.vaadin.addon.spreadsheet.charts.converter.chartdata.ChartData.ColorProperties;
-import com.vaadin.addon.spreadsheet.charts.converter.chartdata.ChartData.GradientProperties;
-
 /*
  * #%L
  * Vaadin Spreadsheet Charts Integration
@@ -33,6 +21,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import org.openxmlformats.schemas.drawingml.x2006.main.CTColorScheme;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTGradientFillProperties;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTGradientStop;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTPercentage;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTPositiveFixedPercentage;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTSRgbColor;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTSchemeColor;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTSolidColorFillProperties;
+
+import com.vaadin.addon.spreadsheet.charts.converter.chartdata.ChartData.ColorProperties;
+import com.vaadin.addon.spreadsheet.charts.converter.chartdata.ChartData.GradientProperties;
 
 class ColorUtils {
 
@@ -74,16 +74,12 @@ class ColorUtils {
         return colorMap;
     }
 
-    public static GradientProperties createGradientProperties(
-            CTGradientFillProperties gradFill, Map<String, byte[]> colorMap) {
+    public static GradientProperties createGradientProperties(CTGradientFillProperties gradFill, Map<String, byte[]> colorMap) {
         GradientProperties gradientProp = new GradientProperties();
 
         for (CTGradientStop stop : gradFill.getGsLst().getGsList()) {
-            ColorProperties stopClrProp = createColorPropertiesFromGradientStop(
-                    stop, colorMap);
-
-            gradientProp.colorStops.put(
-                    stop.getPos() / (double) PERCENTAGE_FACTOR, stopClrProp);
+            ColorProperties stopClrProp = createColorPropertiesFromGradientStop(stop, colorMap);
+            gradientProp.colorStops.put(Decimals.toBigDecimal(stop.getPos()).doubleValue() / PERCENTAGE_FACTOR, stopClrProp);
         }
 
         if (gradFill.isSetLin() && gradFill.getLin().isSetAng())
@@ -92,17 +88,14 @@ class ColorUtils {
         return gradientProp;
     }
 
-    public static ColorProperties createColorPropertiesFromFill(
-            CTSolidColorFillProperties solidFill,
-            Map<String, byte[]> colorMap) {
+    public static ColorProperties createColorPropertiesFromFill(CTSolidColorFillProperties solidFill, Map<String, byte[]> colorMap) {
         if (solidFill == null)
             return null;
 
         ColorParameters clr = null;
 
         if (solidFill.isSetSchemeClr()) {
-            clr = getParametersFromSchemeClr(solidFill.getSchemeClr(),
-                    colorMap);
+            clr = getParametersFromSchemeClr(solidFill.getSchemeClr(), colorMap);
         } else if (solidFill.isSetSrgbClr()) {
             clr = getColorParametersFromSrgb(solidFill.getSrgbClr());
         } else {
@@ -113,8 +106,7 @@ class ColorUtils {
         return ColorUtils.createColorPropertiesFromParameters(clr);
     }
 
-    private static ColorParameters getParametersFromSchemeClr(
-            CTSchemeColor schemeClr, Map<String, byte[]> colorMap) {
+    private static ColorParameters getParametersFromSchemeClr(CTSchemeColor schemeClr, Map<String, byte[]> colorMap) {
         ColorParameters clr = new ColorParameters();
 
         String colorName = schemeClr.getVal().toString();
@@ -132,16 +124,14 @@ class ColorUtils {
         return clr;
     }
 
-    private static ColorProperties createColorPropertiesFromGradientStop(
-            CTGradientStop gradientStop, Map<String, byte[]> colorMap) {
+    private static ColorProperties createColorPropertiesFromGradientStop(CTGradientStop gradientStop, Map<String, byte[]> colorMap) {
         if (gradientStop == null)
             return null;
 
         ColorParameters clr = null;
 
         if (gradientStop.isSetSchemeClr()) {
-            clr = getParametersFromSchemeClr(gradientStop.getSchemeClr(),
-                    colorMap);
+            clr = getParametersFromSchemeClr(gradientStop.getSchemeClr(), colorMap);
         } else if (gradientStop.isSetSrgbClr()) {
             clr = getColorParametersFromSrgb(gradientStop.getSrgbClr());
         } else {
@@ -152,8 +142,7 @@ class ColorUtils {
         return ColorUtils.createColorPropertiesFromParameters(clr);
     }
 
-    private static ColorParameters getColorParametersFromSrgb(
-            CTSRgbColor srgbClr) {
+    private static ColorParameters getColorParametersFromSrgb(CTSRgbColor srgbClr) {
         ColorParameters clr = new ColorParameters();
 
         clr.rgb = srgbClr.getVal();
@@ -166,27 +155,24 @@ class ColorUtils {
 
     private static float getLum(List<CTPercentage> list) {
         if (list.size() > 0)
-            return list.get(0).getVal() / PERCENTAGE_FACTOR;
+            return Decimals.toBigDecimal(list.get(0).getVal()).floatValue() / PERCENTAGE_FACTOR;
         else
             return 0;
     }
 
     private static float getAlpha(List<CTPositiveFixedPercentage> alphaList) {
         if (alphaList.size() > 0)
-            return alphaList.get(0).getVal() / PERCENTAGE_FACTOR;
+            return Decimals.toBigDecimal(alphaList.get(0).getVal()).floatValue() / PERCENTAGE_FACTOR;
         else
             return 1;
     }
 
-    private static ColorProperties createColorPropertiesFromParameters(
-            ColorParameters par) {
+    private static ColorProperties createColorPropertiesFromParameters(ColorParameters par) {
         if (par == null)
             return null;
 
-        byte[] rgbWithLum = ColorUtils.applyLum(par.rgb, par.lumMod,
-                par.lumOff);
-        int[] rgbUnsignedWithLum = ColorUtils
-                .convertToUnsignedRange(rgbWithLum);
+        byte[] rgbWithLum = ColorUtils.applyLum(par.rgb, par.lumMod, par.lumOff);
+        int[] rgbUnsignedWithLum = ColorUtils.convertToUnsignedRange(rgbWithLum);
 
         return new ColorProperties(rgbUnsignedWithLum, par.alpha);
     }
@@ -195,8 +181,7 @@ class ColorUtils {
      * Converts from -127..128 range to 0..255
      */
     private static int[] convertToUnsignedRange(byte[] signedRange) {
-        return new int[] { signedRange[0] & 0xFF, signedRange[1] & 0xFF,
-                signedRange[2] & 0xFF };
+        return new int[] {signedRange[0] & 0xFF, signedRange[1] & 0xFF, signedRange[2] & 0xFF};
     }
 
     /**
@@ -259,7 +244,7 @@ class ColorUtils {
         else
             s = (max - min) / (2 - max - min);
 
-        return new float[] { h, s * 100, l * 100 };
+        return new float[] {h, s * 100, l * 100};
     }
 
     private static byte[] toRGB(float hue, float sat, float lum) {
@@ -291,7 +276,7 @@ class ColorUtils {
         byte g_byte = (byte) Math.round(g * 255);
         byte b_byte = (byte) Math.round(b * 255);
 
-        return new byte[] { r_byte, g_byte, b_byte };
+        return new byte[] {r_byte, g_byte, b_byte};
     }
 
     private static float HueToRGB(float p, float q, float hue) {
@@ -316,4 +301,5 @@ class ColorUtils {
 
         return p;
     }
+
 }

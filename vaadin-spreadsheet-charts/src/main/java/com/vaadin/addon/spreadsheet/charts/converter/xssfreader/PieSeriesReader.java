@@ -68,8 +68,7 @@ public class PieSeriesReader extends
         if (isDoughnut) {
             isExplodedDoughnutHandled = true;
             seriesData.isDonut = true;
-            seriesData.donutHoleSizePercent = ((CTDoughnutChart) getChart())
-                    .getHoleSize().getVal();
+            seriesData.donutHoleSizePercent = Decimals.toBigDecimal( ((CTDoughnutChart) getChart()).getHoleSize().getVal()).shortValue();
         }
     }
 }

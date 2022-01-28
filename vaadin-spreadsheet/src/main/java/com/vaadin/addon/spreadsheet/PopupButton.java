@@ -28,6 +28,7 @@ import com.vaadin.addon.spreadsheet.client.PopupButtonClientRpc;
 import com.vaadin.addon.spreadsheet.client.PopupButtonServerRpc;
 import com.vaadin.addon.spreadsheet.client.PopupButtonState;
 import com.vaadin.addon.spreadsheet.client.PopupButtonWidget;
+import com.vaadin.event.SerializableEventListener;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.AbstractSingleComponentContainer;
 import com.vaadin.ui.Component;
@@ -345,7 +346,7 @@ public class PopupButton extends AbstractComponent implements HasComponents {
      * Interface for listening for a {@link PopupOpenEvent} fired by a
      * {@link PopupButton}.
      */
-    public interface PopupOpenListener extends Serializable {
+    public interface PopupOpenListener extends SerializableEventListener {
         public static final Method POPUP_OPEN_METHOD = ReflectTools.findMethod(
                 PopupOpenListener.class, "onPopupOpen", PopupOpenEvent.class);
 
@@ -389,7 +390,7 @@ public class PopupButton extends AbstractComponent implements HasComponents {
      * Interface for listening for a {@link PopupCloseEvent} fired by a
      * {@link PopupButton}.
      */
-    public interface PopupCloseListener extends Serializable {
+    public interface PopupCloseListener extends SerializableEventListener {
         public static final Method POPUP_CLOSE_METHOD = ReflectTools
                 .findMethod(PopupCloseListener.class, "onPopupClose",
                         PopupCloseEvent.class);

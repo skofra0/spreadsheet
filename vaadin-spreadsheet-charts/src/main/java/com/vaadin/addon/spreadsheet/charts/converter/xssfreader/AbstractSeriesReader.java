@@ -51,14 +51,14 @@ public abstract class AbstractSeriesReader<CT_SER_TYPE extends XmlObject, SERIES
 
     public enum ValueUpdateMode {
         Y_VALUES, X_VALUES, Z_VALUES, CATEGORIES
-    };
+    }
 
-    public AbstractSeriesReader(XmlObject ctChart, Spreadsheet spreadsheet,
+    protected AbstractSeriesReader(XmlObject ctChart, Spreadsheet spreadsheet,
             boolean showDataInHiddenCells) {
         this(ctChart, spreadsheet, false, showDataInHiddenCells);
     }
 
-    public AbstractSeriesReader(XmlObject ctChart, Spreadsheet spreadsheet,
+    protected AbstractSeriesReader(XmlObject ctChart, Spreadsheet spreadsheet,
             boolean is3d, boolean showDataInHiddenCells) {
         this.ctChart = ctChart;
         this.spreadsheet = spreadsheet;
