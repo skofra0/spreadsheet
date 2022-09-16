@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.vaadin</groupId>
-	<version>3.0.0.nexus2</version>
+	<version>3.0.0.nexus3</version>
 	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
 	<packaging>pom</packaging>
 	<name>Vaadin Spreadsheet</name>
@@ -36,7 +36,7 @@
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<testbench.version>5.2.0</testbench.version>
 		<testbench.api.version>${vaadin.version}</testbench.api.version>
-		<poi.version>5.2.0</poi.version>
+		<poi.version>5.2.2</poi.version>
 		<jetty.plugin.version>${jetty.version}</jetty.plugin.version>
 		<productionMode>true</productionMode>
 		<tb.hub>testbench-hub.intra.itmill.com</tb.hub>
@@ -109,10 +109,10 @@
 	            <plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
 	                <artifactId>maven-compiler-plugin</artifactId>
-					<version>3.9.0</version>
+					<version>3.10.1</version>
 	                <configuration>
 	                    <encoding>UTF-8</encoding>
-	                    <release>8</release>
+	                    <release>11</release>
 	                </configuration>
 	            </plugin>
 	            <plugin>

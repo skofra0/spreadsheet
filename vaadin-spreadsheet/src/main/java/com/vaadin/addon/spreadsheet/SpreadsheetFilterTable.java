@@ -86,10 +86,9 @@ public class SpreadsheetFilterTable extends SpreadsheetTable implements
             CellRangeAddress fullTableRegion) {
         super(spreadsheet, sheet, fullTableRegion);
 
-        popupButtonToFiltersMap = new HashMap<PopupButton, HashSet<SpreadsheetFilter>>();
-        popupButtonToClearButtonMap = new HashMap<PopupButton, Button>();
-        filteringRegion = new CellRangeAddress(
-                fullTableRegion.getFirstRow() + 1,
+        popupButtonToFiltersMap = new HashMap<>();
+        popupButtonToClearButtonMap = new HashMap<>();
+        filteringRegion = new CellRangeAddress( Math.min(fullTableRegion.getFirstRow() + 1, fullTableRegion.getLastRow()),
                 fullTableRegion.getLastRow(), fullTableRegion.getFirstColumn(),
                 fullTableRegion.getLastColumn());
 

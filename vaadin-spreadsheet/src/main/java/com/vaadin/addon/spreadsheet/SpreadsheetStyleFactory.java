@@ -183,8 +183,7 @@ public class SpreadsheetStyleFactory implements Serializable {
     public void reloadWorkbookStyles() {
         final Workbook workbook = spreadsheet.getWorkbook();
         if (spreadsheet.getState().cellStyleToCSSStyle == null) {
-            spreadsheet.getState().cellStyleToCSSStyle = new HashMap<Integer, String>(
-                    workbook.getNumCellStyles());
+            spreadsheet.getState().cellStyleToCSSStyle = new HashMap<>(workbook.getNumCellStyles());
         } else {
             spreadsheet.getState().cellStyleToCSSStyle.clear();
         }
@@ -519,7 +518,7 @@ public class SpreadsheetStyleFactory implements Serializable {
         mergedCellBorders.clear();
 
         if (spreadsheet.getState().shiftedCellBorderStyles == null) {
-            spreadsheet.getState().shiftedCellBorderStyles = new ArrayList<String>();
+            spreadsheet.getState().shiftedCellBorderStyles = new ArrayList<>();
         } else {
             spreadsheet.getState().shiftedCellBorderStyles.clear();
         }
@@ -559,7 +558,7 @@ public class SpreadsheetStyleFactory implements Serializable {
 
     @SuppressWarnings({ "unchecked" })
     private static <K, V> Map<K, V> mapFor(Object... mapping) {
-        Map<K, V> map = new HashMap<K, V>();
+        Map<K, V> map = new HashMap<>();
         for (int i = 0; i < mapping.length; i += 2) {
             map.put((K) mapping[i], (V) mapping[i + 1]);
         }
