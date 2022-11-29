@@ -36,7 +36,7 @@
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<testbench.version>5.2.0</testbench.version>
 		<testbench.api.version>${vaadin.version}</testbench.api.version>
-		<poi.version>5.2.2</poi.version>
+		<poi.version>5.2.3</poi.version>
 		<jetty.plugin.version>${jetty.version}</jetty.plugin.version>
 		<productionMode>true</productionMode>
 		<tb.hub>testbench-hub.intra.itmill.com</tb.hub>
