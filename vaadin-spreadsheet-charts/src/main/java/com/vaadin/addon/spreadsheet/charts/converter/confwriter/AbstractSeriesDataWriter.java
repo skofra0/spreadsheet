@@ -26,7 +26,6 @@ import com.vaadin.addon.charts.model.Series;
 import com.vaadin.addon.spreadsheet.charts.converter.chartdata.AbstractSeriesData;
 import com.vaadin.addon.spreadsheet.charts.converter.chartdata.AbstractSeriesData.DataUpdateListener;
 import com.vaadin.addon.spreadsheet.charts.converter.chartdata.AbstractSeriesData.SeriesPoint;
-import com.vaadin.addon.spreadsheet.charts.converter.confwriter.SelectListeningDataSeries.SelectListener;
 
 public abstract class AbstractSeriesDataWriter {
     private final AbstractSeriesData series;
