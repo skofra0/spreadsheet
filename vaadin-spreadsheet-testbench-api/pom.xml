@@ -7,7 +7,7 @@
 	<parent>
 	    <groupId>com.vaadin</groupId>
     	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
-	    <version>3.0.0.nexus3</version>
+	    <version>3.0.0.deem1</version>
 	</parent>
     <artifactId>vaadin-spreadsheet-testbench-api</artifactId>
     <name>Vaadin Spreadsheet Testbench API</name>
@@ -17,16 +17,9 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-testbench-api</artifactId>
-            <version>8.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-testbench-core</artifactId>
-            <version>5.1.0</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+     </dependencies>
     <build>
         <plugins>
             <plugin>

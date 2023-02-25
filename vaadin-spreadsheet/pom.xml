@@ -6,7 +6,7 @@
 	<parent>
 	    <groupId>com.vaadin</groupId>
     	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
-	    <version>3.0.0.nexus3</version>
+	    <version>3.0.0.deem1</version>
 	</parent>
     <artifactId>vaadin-spreadsheet</artifactId>
     <packaging>jar</packaging>
@@ -81,8 +81,22 @@
                         </manifestEntries>
                     </archive>
                 </configuration>
+                
             </plugin>
-
+            
+            <!-- 
+            <plugin> 
+            <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			-->
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -198,7 +212,7 @@
             <!-- Testing -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.0.0-M9</version>
                 <configuration>
                     <includes>
                         <include>**/junit/*</include>
@@ -208,7 +222,7 @@
 
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.0.0-M9</version>
                 <configuration>
                     <excludes>
                         <!-- Files here might match to naming convetions,
@@ -274,17 +288,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
 
         <pluginManagement>

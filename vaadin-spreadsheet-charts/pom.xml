@@ -7,7 +7,7 @@
 	<parent>
 	    <groupId>com.vaadin</groupId>
     	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
-	    <version>3.0.0.nexus3</version>
+	    <version>3.0.0.deem1</version>
 	</parent>
 
     <packaging>jar</packaging>
@@ -190,7 +190,6 @@
 
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.4</version>
                 <configuration>
                     <webResources>
                         <webResource>
@@ -204,7 +203,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>3.0.0-M9</version>
                 <configuration>
                     <excludes>
                         <exclude>
@@ -218,7 +217,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>3.0.0-M9</version>
                 <configuration>
                     <includes>
                         <include>**/*TBTest.java</include>

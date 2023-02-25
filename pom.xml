@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.vaadin</groupId>
-	<version>3.0.0.nexus3</version>
+	<version>3.0.0.deem1</version>
 	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
 	<packaging>pom</packaging>
 	<name>Vaadin Spreadsheet</name>
@@ -31,7 +31,7 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>9.4.44.v20210927</jetty.version>
-		<charts.version>4.3.0</charts.version>
+		<charts.version>4.3.2</charts.version>
 		<vaadin.version>8.14.3</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<testbench.version>5.2.0</testbench.version>
@@ -43,48 +43,33 @@
 	</properties>
 
 	<modules>
-		<module>vaadin-spreadsheet</module>
 		<module>vaadin-spreadsheet-testbench-api</module>
+		<module>vaadin-spreadsheet</module>
 		<module>vaadin-spreadsheet-charts</module>
 	</modules>
 
 	<distributionManagement>
 		<repository>
-			<id>NexusMaven</id>
-			<url>https://pkgs.dev.azure.com/bdodev/Nexus/_packaging/NexusMaven/maven/v1</url>
+			<id>DeemMaven</id>
+			<url>http://51.120.242.160:8081/repository/maven-releases</url>
 		</repository>
 	</distributionManagement>
 
 	<repositories>
 		<repository>
-			<id>NexusMaven</id>
-			<url>https://pkgs.dev.azure.com/bdodev/Nexus/_packaging/NexusMaven/maven/v1</url>
+			<id>DeemMaven</id>
+			<url>http://51.120.242.160:8081/repository/maven-public</url>
 		</repository>
 		<repository>
-			<id>bdo-nexus</id>
-			<url>http://10.241.62.17:8082/nexus/content/groups/public</url>
+			<id>vaadin-addons</id>
+			<url>https://maven.vaadin.com/vaadin-addons</url>
 		</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>NexusMaven</id>
-			<url>https://pkgs.dev.azure.com/bdodev/Nexus/_packaging/NexusMaven/maven/v1</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>vaadin-prereleases</id>
-			<name>Vaadin Pre-releases</name>
-			<url>https://maven.vaadin.com/vaadin-prereleases</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>vaadin-snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<id>DeemMaven</id>
+			<url>http://51.120.242.160:8081/repository/maven-public</url>
 		</pluginRepository>
 	</pluginRepositories>
 
@@ -230,6 +215,16 @@
 				<version>3.1.0</version>
 				<scope>provided</scope>
 			</dependency>
+	        <dependency>
+	            <groupId>com.vaadin</groupId>
+	            <artifactId>vaadin-testbench-api</artifactId>
+	            <version>${testbench.api.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.vaadin</groupId>
+	            <artifactId>vaadin-testbench-core</artifactId>
+	            <version>${testbench.version}</version>
+	        </dependency>
 			
 			<dependency>
 				<groupId>junit</groupId>
