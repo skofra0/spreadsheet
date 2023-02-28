@@ -51,14 +51,14 @@
 	<distributionManagement>
 		<repository>
 			<id>DeemMaven</id>
-			<url>http://51.120.242.160:8081/repository/maven-releases</url>
+			<url>https://maven.deem.no:8443/repository/maven-releases</url>
 		</repository>
 	</distributionManagement>
 
 	<repositories>
 		<repository>
 			<id>DeemMaven</id>
-			<url>http://51.120.242.160:8081/repository/maven-public</url>
+			<url>https://maven.deem.no:8443/repository/maven-public</url>
 		</repository>
 		<repository>
 			<id>vaadin-addons</id>
@@ -69,7 +69,7 @@
 	<pluginRepositories>
 		<pluginRepository>
 			<id>DeemMaven</id>
-			<url>http://51.120.242.160:8081/repository/maven-public</url>
+			<url>https://maven.deem.no:8443/repository/maven-public</url>
 		</pluginRepository>
 	</pluginRepositories>
 
@@ -79,7 +79,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>3.0.0-M2</version>
+					<version>3.1.0</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
