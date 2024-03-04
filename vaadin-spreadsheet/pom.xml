@@ -84,19 +84,7 @@
                 
             </plugin>
             
-            <!-- 
-            <plugin> 
-            <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-			-->
+       <!--
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -113,16 +101,13 @@
                 <configuration>
                     <manifestLocation>${project.build.outputDirectory}/META-INF</manifestLocation>
                     <excludeDependencies>*;scope=provided|runtime</excludeDependencies>
-                    <!-- <excludeDependencies>vaadin-client,vaadin-server</excludeDependencies> -->
                     <instructions>
                         <Export-Package>com.vaadin.addon.spreadsheet,com.vaadin.addon.spreadsheet.action,com.vaadin.addon.spreadsheet.command</Export-Package>
-                        <!-- Ignore GWT stuff, not needed in osgi bundles,
-                            GWT compilation seldom happens in such -->
                         <Import-Package>!com.google.gwt.*,org.apache.poi.ss.formula,!com.vaadin.client.*, *</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
-
+-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -296,7 +281,7 @@
                 <plugin>
                     <groupId>com.vaadin</groupId>
                     <artifactId>vaadin-maven-plugin</artifactId>
-                    <version>${vaadin.version}</version>
+                    <version>${vaadin.plugin.version}</version>
                     <configuration>
                         <webappDirectory>${project.build.directory}/testwebapp/VAADIN/widgetsets</webappDirectory>
                         <extraJvmArgs>-Xmx1g -Xms1g</extraJvmArgs>
@@ -437,13 +422,13 @@
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 
-		<!-- test -->
+		<!-- test
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-compatibility-themes</artifactId>
             <version>${vaadin.version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>  -->
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-push</artifactId>

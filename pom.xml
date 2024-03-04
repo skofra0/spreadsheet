@@ -30,10 +30,10 @@
 		<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jetty.version>9.4.44.v20210927</jetty.version>
+		<jetty.version>10.0.14</jetty.version>
 		<charts.version>4.3.2</charts.version>
-		<vaadin.version>8.14.3</vaadin.version>
-		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+		<vaadin.version>9.0.2</vaadin.version>
+		<vaadin.plugin.version>8.14.3</vaadin.plugin.version>
 		<testbench.version>5.2.0</testbench.version>
 		<testbench.api.version>${vaadin.version}</testbench.api.version>
 		<poi.version>5.2.3</poi.version>
@@ -51,14 +51,14 @@
 	<distributionManagement>
 		<repository>
 			<id>DeemMaven</id>
-			<url>https://maven.deem.no:8443/repository/maven-releases</url>
+			<url>http://maven.deem.no:8081/repository/maven-releases</url>
 		</repository>
 	</distributionManagement>
 
 	<repositories>
 		<repository>
 			<id>DeemMaven</id>
-			<url>https://maven.deem.no:8443/repository/maven-public</url>
+			<url>http://maven.deem.no:8081/repository/maven-public</url>
 		</repository>
 		<repository>
 			<id>vaadin-addons</id>
@@ -69,7 +69,7 @@
 	<pluginRepositories>
 		<pluginRepository>
 			<id>DeemMaven</id>
-			<url>https://maven.deem.no:8443/repository/maven-public</url>
+			<url>http://maven.deem.no:8081/repository/maven-public</url>
 		</pluginRepository>
 	</pluginRepositories>
 
@@ -94,7 +94,7 @@
 	            <plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
 	                <artifactId>maven-compiler-plugin</artifactId>
-					<version>3.10.1</version>
+					<version>3.11.0</version>
 	                <configuration>
 	                    <encoding>UTF-8</encoding>
 	                    <release>11</release>
