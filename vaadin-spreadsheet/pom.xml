@@ -6,7 +6,7 @@
 	<parent>
 	    <groupId>com.vaadin</groupId>
     	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
-	    <version>3.0.0.deem1</version>
+	    <version>3.0.0.deem2</version>
 	</parent>
     <artifactId>vaadin-spreadsheet</artifactId>
     <packaging>jar</packaging>
@@ -36,19 +36,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-					<release>8</release>
                     <encoding>UTF-8</encoding>
+	                <source>1.8</source>
+	                <target>1.8</target>
+			   <!-- <release>8</release> -->
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
                 <configuration>
                     <archive>
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
@@ -81,9 +87,8 @@
                         </manifestEntries>
                     </archive>
                 </configuration>
-                
             </plugin>
-            
+
        <!--
             <plugin>
                 <groupId>org.apache.felix</groupId>
@@ -197,7 +202,7 @@
             <!-- Testing -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M9</version>
+                <version>3.5.2</version>
                 <configuration>
                     <includes>
                         <include>**/junit/*</include>
@@ -207,7 +212,7 @@
 
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M9</version>
+                <version>3.5.2</version>
                 <configuration>
                     <excludes>
                         <!-- Files here might match to naming convetions,
@@ -361,6 +366,10 @@
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
+			<resource>
+				<directory>src/main/resources-filtered</directory>
+				<filtering>true</filtering>
+			</resource>
             <resource>
                 <directory>src/main/webapp</directory>
             </resource>

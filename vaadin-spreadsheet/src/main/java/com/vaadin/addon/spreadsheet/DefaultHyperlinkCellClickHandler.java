@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.poi.common.usermodel.HyperlinkType;
+import org.apache.poi.ss.formula.LazyRefEval;
 import org.apache.poi.ss.formula.WorkbookEvaluatorProvider;
 import org.apache.poi.ss.formula.eval.StringEval;
 import org.apache.poi.ss.formula.eval.ValueEval;
@@ -213,6 +214,10 @@ public class DefaultHyperlinkCellClickHandler implements
                             new CellReference(cell.getSheet().getSheetName(),
                                     cell.getRowIndex(), cell.getColumnIndex(),
                                     false, false));
+            if (value instanceof LazyRefEval) {
+              LazyRefEval lazy = ((LazyRefEval) value);
+              value = lazy.getInnerValueEval(lazy.getFirstSheetIndex());
+            }
             if (value instanceof StringEval) {
                 return ((StringEval) value).getStringValue();
             }

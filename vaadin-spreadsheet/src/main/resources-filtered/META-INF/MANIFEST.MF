@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-License: https://vaadin.com/commercial-license-and-service-terms
+AdVaaLicen: VCL
+Bundle-SymbolicName: com.vaadin.spreadsheet
+Built-By: root
+Bundle-DocURL: https://vaadin.com
+Bundle-Name: ${Implementation-Title}
+Vaadin-Package-Version: 1
+Build-Jdk-Spec: 1.8
+Vaadin-Stylesheets: VAADIN/addons/spreadsheet/spreadsheet.scss
+Implementation-Title: ${Implementation-Title}
+Implementation-Version: ${Implementation-Version}
+Bundle-Vendor: ${Implementation-Vendor}
+Implementation-Vendor: ${Implementation-Vendor}
+Vaadin-Widgetsets: com.vaadin.addon.spreadsheet.Widgetset
+Bundle-Version: ${Implementation-Version}
+AdVaaPkg: com.vaadin.addon.spreadsheet.client
+Created-By: Apache Maven Bundle Plugin

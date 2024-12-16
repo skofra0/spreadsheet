@@ -318,7 +318,8 @@ public class SpreadsheetHandlerImpl implements SpreadsheetServerRpc {
                         cell.setCellValue(cellContent);
                     }
                 } else {
-                    cell.setCellType(CellType.BLANK);
+                    cell.setBlank();
+                    // cell.setCellType(CellType.BLANK);
                     spreadsheet.markCellAsDeleted(cell, true);
                 }
 
@@ -450,7 +451,8 @@ public class SpreadsheetHandlerImpl implements SpreadsheetServerRpc {
         spreadsheet.getSpreadsheetHistoryManager().addCommand(command);
 
         for (Cell targetCell : targetCells) {
-            targetCell.setCellType(CellType.BLANK);
+            targetCell.setBlank();
+            // targetCell.setCellType(CellType.BLANK)
             spreadsheet.markCellAsDeleted(targetCell, true);
         }
 

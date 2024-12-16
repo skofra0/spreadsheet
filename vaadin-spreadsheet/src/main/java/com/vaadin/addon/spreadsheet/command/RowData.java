@@ -219,7 +219,9 @@ class RowData implements Serializable {
             }
             cell.setCellStyle(cellStyle);
 
-            cell.setCellType(cellType);
+            if (cellType != CellType.FORMULA) {
+              cell.setCellType(cellType);
+            }
 
             switch (cellType) {
                 case _NONE:

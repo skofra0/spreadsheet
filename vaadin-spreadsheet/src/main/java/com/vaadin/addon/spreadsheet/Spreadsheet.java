@@ -1733,7 +1733,7 @@ public class Spreadsheet extends AbstractComponent implements HasComponents,
         } else {
             final String key = SpreadsheetUtil.toKey(col + 1, row + 1);
             valueManager.clearCellCache(key);
-            cell.setCellType(CellType.FORMULA);
+            // cell.setCellType(CellType.FORMULA);
         }
         cell.setCellFormula(formula);
         valueManager.cellUpdated(cell);

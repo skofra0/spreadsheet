@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.vaadin</groupId>
-	<version>3.0.0.deem1</version>
+	<version>3.0.0.deem2</version>
 	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
 	<packaging>pom</packaging>
 	<name>Vaadin Spreadsheet</name>
@@ -21,7 +21,6 @@
 		</license>
 	</licenses>
 
-
 	<properties>
 		<!-- ZIP Manifest fields -->
 		<Implementation-Version>${project.version}</Implementation-Version>
@@ -31,12 +30,13 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>10.0.14</jetty.version>
-		<charts.version>4.3.2</charts.version>
-		<vaadin.version>9.0.2</vaadin.version>
+		<charts.version>4.3.5</charts.version>
+		<vaadin.version>9.2.0</vaadin.version>
 		<vaadin.plugin.version>8.14.3</vaadin.plugin.version>
 		<testbench.version>5.2.0</testbench.version>
 		<testbench.api.version>${vaadin.version}</testbench.api.version>
-		<poi.version>5.2.3</poi.version>
+		<poi.version>5.3.0</poi.version>
+		<xmlbeans.version>5.3.0</xmlbeans.version>
 		<jetty.plugin.version>${jetty.version}</jetty.plugin.version>
 		<productionMode>true</productionMode>
 		<tb.hub>testbench-hub.intra.itmill.com</tb.hub>
@@ -89,7 +89,7 @@
 	            <plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
 	                <artifactId>maven-jar-plugin</artifactId>
-	                <version>3.2.2</version>
+	                <version>3.4.2</version>
 	            </plugin>
 	            <plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
@@ -97,7 +97,9 @@
 					<version>3.11.0</version>
 	                <configuration>
 	                    <encoding>UTF-8</encoding>
-	                    <release>11</release>
+	                    <source>8</source>
+	                    <target>8</target>
+	                  <!--   <release>11</release> -->
 	                </configuration>
 	            </plugin>
 	            <plugin>
@@ -210,6 +212,11 @@
 				<version>${poi.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans</artifactId>
+				<version>${xmlbeans.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>3.1.0</version>
@@ -239,9 +246,7 @@
 	            <scope>test</scope>
 	        </dependency>
 
-			
 		</dependencies>
 	</dependencyManagement>
-
 
 </project>

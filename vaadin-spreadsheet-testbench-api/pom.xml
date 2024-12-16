@@ -7,7 +7,7 @@
 	<parent>
 	    <groupId>com.vaadin</groupId>
     	<artifactId>vaadin-spreadsheet-directorypackage</artifactId>
-	    <version>3.0.0.deem1</version>
+	    <version>3.0.0.deem2</version>
 	</parent>
     <artifactId>vaadin-spreadsheet-testbench-api</artifactId>
     <name>Vaadin Spreadsheet Testbench API</name>
