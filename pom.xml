@@ -29,9 +29,9 @@
 		<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jetty.version>10.0.14</jetty.version>
+		<jetty.version>10.0.26</jetty.version>
 		<charts.version>4.3.5</charts.version>
-		<vaadin.version>9.2.0</vaadin.version>
+		<vaadin.version>9.2.1</vaadin.version>
 		<vaadin.plugin.version>8.14.3</vaadin.plugin.version>
 		<testbench.version>5.2.0</testbench.version>
 		<testbench.api.version>${vaadin.version}</testbench.api.version>
